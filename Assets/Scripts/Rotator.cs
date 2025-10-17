@@ -7,10 +7,10 @@ public class Rotator : MonoBehaviour
     {
         
     }
-    float degreesPerSecond = 20;
+    public float x = 0; public float y = 0; public float z = 0;
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, -degreesPerSecond) * (Time.deltaTime)*6);
+        transform.Rotate(new Vector3(x,y,z) * (Time.deltaTime)*6);
     }
 }
