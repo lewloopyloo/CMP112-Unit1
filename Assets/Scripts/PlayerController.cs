@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     // Speed at which the player moves.
     public float speed = 0;
     public TextMeshProUGUI countText;
+    public Transform teleportTarget;
+    public GameObject player;
 
     // Start is called before the first frame update.
     void Start()
@@ -45,11 +47,6 @@ public class PlayerController : MonoBehaviour
         countText.text = "Score: " + scoreCount.ToString();
     }
 
-    void SetWinText()
-    {
-        countText.text = "Your final score was: " + scoreCount.ToString();
-    }
-
     // FixedUpdate is called once per fixed frame-rate frame.
     private void FixedUpdate()
     {
@@ -70,10 +67,11 @@ public class PlayerController : MonoBehaviour
             SetCountText();
         }
 
-        if (other.gameObject.CompareTag("Goal"))
+        if (other.gameObject.CompareTag("Teleporter"))
         {
-            SetWinText();
+            player.transform.position = teleportTarget.transform.position;
         }
+
     }
 
 
