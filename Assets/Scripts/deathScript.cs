@@ -6,6 +6,7 @@ public class deathScript : MonoBehaviour
 
     Vector3 StartingPosition;
     Vector3 StartingForwardPosition;
+    public GameObject deathPlane;
     void Start()
     {
         StartingPosition = transform.position;
@@ -20,8 +21,10 @@ public class deathScript : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        transform.position = StartingPosition;
-        transform.forward = StartingForwardPosition;
-        
+        if(collision.gameObject == deathPlane)
+        {
+            transform.position = StartingPosition;
+            transform.forward = StartingForwardPosition;
+        }
     }
 }
