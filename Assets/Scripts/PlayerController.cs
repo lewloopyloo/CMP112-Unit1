@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerController : MonoBehaviour
 {
     // Rigidbody of the player.
@@ -15,12 +16,14 @@ public class PlayerController : MonoBehaviour
 
     // Speed at which the player moves.
     public float speed = 0;
-
+   
     // Start is called before the first frame update.
     void Start()
     {
         // Get and store the Rigidbody component attached to the player.
         rb = GetComponent<Rigidbody>();
+
+       
     }
 
     // This function is called when a move input is detected.
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
+ 
 
     // FixedUpdate is called once per fixed frame-rate frame.
     private void FixedUpdate()
@@ -44,5 +48,12 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
-
 }
+
+
+
+
+
+
+
+
