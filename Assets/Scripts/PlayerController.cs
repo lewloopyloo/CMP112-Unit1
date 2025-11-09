@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     // Rigidbody of the player.
     private Rigidbody rb;
+
+    private int scoreCount;
 
     // Movement along X and Y axes.
     private float movementX;
@@ -16,14 +18,17 @@ public class PlayerController : MonoBehaviour
 
     // Speed at which the player moves.
     public float speed = 0;
-   
+    public TextMeshProUGUI countText;
+    public Transform teleportTarget;
+    public GameObject player;
+
     // Start is called before the first frame update.
     void Start()
     {
+        scoreCount = 0;
         // Get and store the Rigidbody component attached to the player.
         rb = GetComponent<Rigidbody>();
-
-       
+        SetCountText();
     }
 
     // This function is called when a move input is detected.
@@ -36,7 +41,11 @@ public class PlayerController : MonoBehaviour
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
- 
+
+    void SetCountText()
+    {
+        countText.text = "Score: " + scoreCount.ToString();
+    }
 
     // FixedUpdate is called once per fixed frame-rate frame.
     private void FixedUpdate()
@@ -46,14 +55,24 @@ public class PlayerController : MonoBehaviour
 
         // Apply force to the Rigidbody to move the player.
         rb.AddForce(movement * speed);
+
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
+            scoreCount++;
+            SetCountText();
+        }
+
+        if (other.gameObject.CompareTag("Teleporter"))
+        {
+            player.transform.position = teleportTarget.transform.position;
+        }
+
+    }
+
+
 }
-
-
-
-
-
-
-
-

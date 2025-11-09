@@ -7,24 +7,29 @@ public class deathScript : MonoBehaviour
     Vector3 StartingPosition;
     Vector3 StartingForwardPosition;
     public GameObject deathPlane;
+    public GameObject deathPos;
     void Start()
     {
         StartingPosition = transform.position;
-        StartingForwardPosition = transform.forward;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject == deathPlane)
+        if (collision.gameObject == deathPos)
+        {
+            StartingPosition = deathPos.transform.position;
+        }
+
+        if (collision.gameObject == deathPlane)
         {
             transform.position = StartingPosition;
-            transform.forward = StartingForwardPosition;
         }
+       
     }
+
 }

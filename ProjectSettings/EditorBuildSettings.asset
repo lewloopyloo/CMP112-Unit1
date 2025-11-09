@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main menu.unity
     guid: fa7953d2c547a484791917c0a7fb7dd3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/leve1.unity
     guid: 974999fbaea68974fb32978f8c388bb4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Monkey Ball 1.unity
+    guid: c1f9d8132717cfe4481d68c47a467a07
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
