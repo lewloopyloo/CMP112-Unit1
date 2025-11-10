@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     // Speed at which the player moves.
     public float speed = 0;
     public TextMeshProUGUI countText;
-    public Transform teleportTarget;
-    public GameObject player;
+
 
     // Start is called before the first frame update.
     void Start()
@@ -42,9 +41,9 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
-    void SetCountText()
+    void SetCountText() // Function to update the score counter text
     {
-        countText.text = "Score: " + scoreCount.ToString();
+        countText.text = "Score: " + scoreCount.ToString(); // Displays "Score: " and the score counter to the screen
     }
 
     // FixedUpdate is called once per fixed frame-rate frame.
@@ -56,21 +55,19 @@ public class PlayerController : MonoBehaviour
         // Apply force to the Rigidbody to move the player.
         rb.AddForce(movement * speed);
 
+
+
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) // Checking trigger collision
     {
-        if (other.gameObject.CompareTag("PickUp"))
+        if (other.gameObject.CompareTag("PickUp")) // If collision is detected with the tag for Pick Ups
         {
-            other.gameObject.SetActive(false);
-            scoreCount++;
-            SetCountText();
+            other.gameObject.SetActive(false); // Remove the pick up object
+            scoreCount++; // Increment the score counter
+            SetCountText(); // Update the text counter for score
         }
 
-        if (other.gameObject.CompareTag("Teleporter"))
-        {
-            player.transform.position = teleportTarget.transform.position;
-        }
 
     }
 
