@@ -20,17 +20,17 @@ public class deathScript : MonoBehaviour
 
     void OnTriggerEnter(Collider collision) // Collision check
     {
-        if (collision.gameObject == deathPos) // If colliding with the 'deathPos' object
+        if (collision.gameObject == deathPos2)
+        {
+            StartingPosition = deathPos2.transform.position; // sets start position to teleport the player to the beginning of level 3 rather than the beginning of levels 1 or 2
+        }
+
+        else if (collision.gameObject == deathPos) // If colliding with the 'deathPos' object
         {
             StartingPosition = deathPos.transform.position; // sets start position to teleport the player to the beginning of level 2 rather than the beginning of level 1
         }
 
-        if (collision.gameObject == deathPos2)
-        {
-            StartingPosition = deathPos.transform.position; // sets start position to teleport the player to the beginning of level 3 rather than the beginning of levels 1 or 2
-        }
-
-        if (collision.gameObject == deathPlane) // If colliding with the death plane
+        else if (collision.gameObject == deathPlane) // If colliding with the death plane
         {
             transform.position = StartingPosition; // sets players position to 'StartingPosition' which could be at the start of any of the levels 
         }
